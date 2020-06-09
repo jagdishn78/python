@@ -1,0 +1,731 @@
+nee romba alaga irruka
+epdima irruka
+
+
+TSS DWH AO OPS-ES 
+
+TSS INTEGRATION AO OPS-ES
+
+https://top.vodafone.com
+https://top.vodafone.com/reports/saas
+TDOSAAS
+vgctm3hr:/opt/SP/controlm/ZEROT
+
+Birds os prey
+back to way 
+The Gentlemen
+Onward
+
+6L
+9L
+
+17L
+
+
+Database ASM status -- If the DB status is configure to T0 Portal
+Validate P2 alerting with DB team and understanding
+RD P2 will go to backup team
+Healthcheck Jobs --> Talk with Milind 
+Housekeeping --> Reroute to Backup
+RD -> exlucde ZFS Jobs we need to check for feasiblity 
+
+CZ0053YR 
+DC-DBASE-PJ-C-CZ-CZ0053YR-DB-PEGA1DEV-RMAN-ZFS-RD
+CZ0052YR
+DC-DBASE-PJ-C-CZ-CZ0052YR-DB-PEGA1TST-RMAN-ZFS-RD
+
+
+Audience Question
+
+Q: the amount of data still remains the same, if we are not compressing it then how are we saving infra cost
+
+A: We are saving OPS cost, and there is no infra cost -> Big Query is charging you only PER query execution time-> and it tells you execution time before actually executing!
+
+
+
+Audience Question
+
+Q: Sharding seems like partitioning data and storing it in different partitions. Is it?
+
+A: SHARDING is BREAKING data and storing in a distributed storage. Partitions could all have been on same infra, hence the distributed infra 
+
+
+
+Audience Question
+
+Q: 1 ,2 and 2,3 here 2 is replication or the data itself
+
+A: BROKEN COPIES -> even if a machine was lost, then rest of data was still available
+
+
+
+Audience Question
+
+Q: What is meant by understanding the data set here?
+
+A: Run some basic select queries , look/visualize the data
+
+
+
+Audience Question
+
+Q: does it cache it?
+
+A: YES ! My first query took 20 seconds, the next took only 1.5 seconds
+
+
+
+Audience Question
+
+Q: what is the best approach convert normalize table  to denormalize table? is it transaction dbs (cloud SQL) or OLAP dbs(BigQuery)?
+
+A: FLATTENING or (norm  + denorm) is automatically done by BigQuery. In OLTP, you would n't have denormalized anyway!
+
+
+
+Audience Question
+
+Q: What is the difference between OLAP and analytics?
+
+A: OLAP is the architecture supporting analytics 
+
+
+
+Audience Question
+
+Q: the table bigquery-samples need to be added as dataset first to use it ... is it correct?
+
+A: YES -> but public datasets are also available (or bring your own data) 
+
+
+
+Audience Question
+
+Q: is it possible to connect database and load data, instead of using file approach.
+
+A: ABSOLUTELY! but first ETL into BigQuery external table
+
+
+
+Audience Question
+
+Q: In a ERP environment what's the benefit of using BigQuery over exisiting ERP warehousing tools
+
+A: Infrastrure management and COST. BigQuery is comparable with SQL Data Warehouse (Synapse Analytics). Other tools require high expertise and management overhead. 
+
+
+
+Audience Question
+
+Q: what happens to confidential data
+
+A: Sensitive data such as SPDI or PII should be encrypted while DATA is at REST
+
+
+
+Audience Question
+
+Q: can we connect local data base instance with big query?
+
+A: No, get data into cloud so that there is no latency, hence no unexpectedly added COST due to time overhead
+
+
+
+Audience Question
+
+Q: GCP also can handle semi structure data ?
+
+A: Lack of structure -> UNSTRUCTURED ! Example -> Photos went to GCS, their URLs could be stored in structured table! 
+
+
+
+Audience Question
+
+Q: What kind of analysis bigquery does?
+
+
+A: ALL kinds! 
+
+
+
+Audience Question
+
+Q: BigTable/BigQuery is SQL or NOSqL DB ?
+
+A: BigTable/BigQuery is SQL or NOSqL DB ?< - NOT the difference!
+
+BigTABLE is NON RELATIONAL! 
+Relational -> presence of foreign key 
+
+SENSOR DATA for IoT apps -> BigTable 
+
+
+
+Audience Question
+
+Q: How do you see Bigquery incomparison to Amazon Redshift
+
+A: GCP -> bigQuery, Azure -> SQL DW 
+
+
+
+Audience Question
+
+Q: Can you recommend any book?
+
+A: OFFICIAL DOCUMENTATION!
+
+
+
+Audience Question
+
+Q: Will the recording be available to view later on, and if yes, where.
+
+A: https://cloud.google.com/solutions/mobile/mobile-gaming-analysis-telemetry
+
+
+
+Audience Question
+
+Q: While we merge Pub/Sub & Cloud Storage, how do we gurantee the Schema while merging?
+
+A: FOR ANALYSIS, SCHEMA cannot change -> so hardcode the schema! 
+
+
+
+Audience Question
+
+Q: what is difference between Pub Sub and Kafka
+
+A: Kafka throws data stream, Pub/Sub consumes data stream
+
+
+
+Audience Question
+
+Q: thros and consumes
+
+A: Washing machine -> my water level, cloth cleaning status will be streaming to the user's mobile app. KAFKA will be deployed on-> Washing machine. This kafka stream will be consumed into Pub/Sub and then thrown out as a notification to mobile app. 
+
+
+
+Audience Question
+
+Q: PUB/SUB is acting as a coupling tool so in order to bring the transmitter and reciever on par it must temporarily storing the data
+
+A: STORE the data -> EXACTLY like how router would store it-> not really store it, but either drop or forward it. 
+
+
+
+Audience Question
+
+Q: why Pub can't be applied directly to take status of activities of washing machine?
+
+A: Washing machine is in somebody's home while Pub/Sub is on CLOUD. So somebody will need to build a network between the two. That network is built with Kafka as data provider, and Pub/Sub as consumer 
+
+
+
+Audience Question
+
+Q: does pub/sub act like a valve for incoming data?
+
+A: yes
+
+
+
+Audience Question
+
+Q: Does BQ performance varies based on type of storage underneath?
+
+A: ABSOLUTELY! if you are right next to me, i can call you immediately. If you were in another city, it'd take that much time! FASTEST -> BQ itself. SLOWEST -> GCS. 
+
+
+
+Audience Question
+
+Q: ohh it needs to be on same eco system!!!
+
+A: yes
+
+
+
+Audience Question
+
+Q: doesn't velocity of data lead to volume of data, in a way aren't they similar to each other.
+
+A: YES of course! 
+
+
+
+Audience Question
+
+Q: Can you re-explain Structured and Unstructured Data
+
+A: UnSTRUCTURED data -> no RULE based on which data was kept. NOTEPAD, files inside a folder. Structured -> EVERY data point is consistent (Tables in SQL!) 
+
+
+
+Audience Question
+
+Q: can you also discuss little on pubsub dataproc also
+
+A: DataProc -> LIFTs and SHIFTs the entire Apache Spark ecosystem 
+into GCP (with minimal changes)
+
+Thus this becomes a STARTING point for cloud migrations 
+
+
+
+Audience Question
+
+Q: any limits/thresholds on BQ storage, if yes what are the principles to follow while storing?
+
+A: GREATER than 1 PB . Don't use it for just GBs of data-> it's killing a fly with bazooka!
+
+
+
+Audience Question
+
+Q: what is bq storage
+
+A: To avoid latency, BQ also has local storage to store TABLES. Otherwise we can always store more cheaply in GCS (which will also have latency)
+
+
+
+Audience Question
+
+Q: with data proc I have seen the cloud dataflow keyword? 
+
+A: DataFlow merges multiple data sources into one -> MASTER DATA MANAGEMENT
+
+
+
+Audience Question
+
+Q: OLTP vs OLAP?
+
+A: https://www.stitchdata.com/resources/oltp-vs-olap/
+
+
+
+Audience Question
+
+Q: what is serverless?
+
+A: BQ -> did i install linux or windows? did i even bother? INFRA was transparent to me! this is SERVERLESS-> there was no server to pay for! Hence i am paying by execution time and not for any server running costs. 
+
+
+
+Audience Question
+
+Q: Hi Shantanu , like big query we can use HIVE as well ?
+
+A: DataProc not bigquery -> HiveContext/SQLContext or PIG
+
+
+
+Audience Question
+
+Q: can we connect local data base instance with big query?
+can we connect local data base instance with big query?
+
+
+A: nope
+
+
+
+Audience Question
+
+Q: Is there any differece in GCP and AWS or both are just competitors .
+
+A: Competitors
+
+
+
+Audience Question
+
+Q: does data lake contains unstructured data
+
+A: EVERYTHING, structured or unstructured
+
+
+
+Audience Question
+
+Q: in columnar structure
+
+A: Each column in separate, compressed,
+encrypted file that is replicated 3+ times
+No indexes, keys or partitions required
+For immutable, massive datasets
+
+
+
+
+Audience Question
+
+Q: is data lake source in etl pipeline
+
+A: YES, MOST of the times
+
+
+
+Audience Question
+
+Q: how does where statement work in backend
+
+A: WHERE is a conditional match-> wheter an element exists or noot, boolean result (true/false)
+
+
+
+Audience Question
+
+Q: What are differences b/w GCP & hadoop because both are process the BIG data?
+
+A: Both are data lakes. Hadoop is slower than GCS, hadoop requires APACHE SPARK to query it. GCS has a UI, CLI and even APIs 
+
+
+
+Audience Question
+
+Q: is dw target in etl pipeline
+
+A: YES, sometimes. Or could be an intermediate step when you want to do analysis via DW but view results in a mobile app or 3rd party application!
+
+
+
+Audience Question
+
+Q: how are these columns related to each other
+
+A: they are not! They just share the pointer pointing to them 
+
+
+
+Audience Question
+
+Q: Is it default the each file is copied 3 times for the high availability?
+
+A: YES
+
+
+
+Audience Question
+
+Q: it means datalake also has structured data ?
+
+A: YES can have -> not necessarily tho
+
+
+
+Audience Question
+
+Q: In Columnar, respective pointers(Age/Marks) has to be on the same node for SYNC?
+
+A: NO, different nodes -> But within same network in near real time latency
+
+
+
+Audience Question
+
+Q: Can we increase replication ?
+
+A: it's predefined at 3
+
+
+
+Audience Question
+
+Q: Serverless is like SaaS offering
+
+A: PaaS -> Platform as a service -> Big Query is a PaaS -> you as dev can build a SaaS on top of this PaaS
+
+
+
+Audience Question
+
+Q: are you covering cloud IAM by any chance ?
+
+A: IAM -> identity and Access management. Allocate resources into PROJECTs, and manage users and service principles at PROJECT level only. All users inside a project will have access to every resource inside it. EACH team should have a different project. 
+
+
+
+Audience Question
+
+Q: Is it possible to make a career switch to data analyst? 
+
+A: ABSOLUTELY! Statistics , Game Theory, Porbaility, Permutation Combination , Charts and Visualizations, Sets , Series and Propagation 
+
+
+
+Audience Question
+
+Q: Hello Shantanu .. i have important meeting at 06:00 so need to drop out ..thanks for the session 
+
+A: thank you!
+
+
+
+Audience Question
+
+Q: will DR be there without HA or FT
+
+A: YES, can be. But HA is more important if you are a global player. DR is more important (than HA) if you are a local player. 
+
+
+
+Audience Question
+
+Q: What's difference between Data Analyst and Data Scientist
+
+A: Data Engineer / Data Architect (Cloud+on prem. + network + storage), Data Scientist (math,algorithm, optimization, neural networks), Data Analyst (define business objectives, use algorithms built by data scientists), Database manager 
+
+
+
+Audience Question
+
+Q: since we have 3 columns it is copied 3 times
+
+A: No. ANY no. of columns would've been broken into individual files and then copied 3 times for HIGH availability. So that, even if 1 fails, you have 2 copies available for reading data. 
+
+
+
+Audience Question
+
+Q: Is data anylyst and data science are both same?
+
+A: no-> data science is hardcore math and algorithms. Data Analyst and Data Engineers are what industry looks for. Data Scientists are typically PhDs. 
+
+
+
+Audience Question
+
+Q: may i know a bit about apache streaming wrt gcp?
+
+A: Streaming is taken care with help of Pub/Sub on GCP, but apache spark doesn't support Pub Sub. That is why, for Apache Spark, we will need StreamContext (PySpark or Scala) to stream which is independent of GCP. 
+
+
+
+Audience Question
+
+Q: Are you currently providing training on GCP...if yes, where to enroll for it.
+
+A: check with RPS consulting please :) (the organizers)
+
+
+
+Audience Question
+
+Q: Is RPA also comes in the current diagram of AI and DS?
+
+A: Robotic Process Automation would fall between AI and Robotics (if hardware RPA) or just AI (if software RPA)
+
+
+
+Audience Question
+
+Q: is GCP provide any ETL UI based components like Talend, Informatica have?
+
+
+A: CLOUDs are BACKEND to which such tools will connect. These cloud provide you their UI (on web), CLI on console and API for other languages. But 3rd party tools would be built by whoever needs it, not the cloud. 
+
+
+
+Audience Question
+
+Q: knowing programming language is important for data engineer 
+
+A: 25% -> Python (PySpark) or Scala  ;     25% -> Machine learning, math and graph theory (Python with Sklearn, Numpy, Scipy);      25% -> Deep Learning , Computer Vision, NLP (Python with Tensorflow/PyTorch or openCV); 25% -> Docker/Kubernetes and other forms of deployments 
+
+
+
+Audience Question
+
+Q: Difference b/n AI Scientist vs Data Scientist ?
+
+A: AI scientist applies Computer Vision and Natural Language Processing problems. Very niche data science problems. 
+
+
+
+Audience Question
+
+Q: keras?
+
+A: KERAS is an API wwrapper on top of packages like TensorFlow, Theano and NLTK (verify the 3rd one, not sure)
+
+
+
+Audience Question
+
+Q: Which ETL tool is better connectivity with GCP, as considering performace ,cost,design?
+
+A: ANY of them -> What you need is a GOOD network and capability to consume from BigQuery 
+
+
+
+Audience Question
+
+Q: Is there any DevOps tool present in GCP?
+
+A: yes
+
+
+
+Audience Question
+
+Q: could you elaborate the difference between kafka and google pubsub again? in which case do we use kafka and google pubsub?
+
+A: Kafka is used by devices and application to throw data to other places (like GCP or on -prem server). Pub/Sub is a consumer and broadcaster or information from/to cloud. 
+
+
+
+Audience Question
+
+Q: How to connect Pandas to PySpark?
+
+A: import pandas as pd -> pandas can only do in-memory calculation, so calculations can't be larger than RAM. 
+
+A: shantanu@meteoros.in in.linkedin.com/in/fourty-two 
+
+
+
+
+Audience Question
+
+Q: I'll be leaving so would appreciate if you can share the details asap.
+
+A: shantanu@meteoros.in in.linkedin.com/in/fourty-two 
+shantanu@meteoros.in      in.linkedin.com/in/fourty-two
+
+
+
+Audience Question
+
+Q: is GCP provide any ETL UI based components like Talend, Informatica have?
+
+A: not GCP, but any tool of your choice
+
+
+
+Audience Question
+
+Q: Is PHD required for Data Scientist?
+
+A: recommedned but NOT REQUIRED. Passionf or research is
+
+
+
+Audience Question
+
+Q: so PHD degree not required correct?
+
+A: NOT REQUIRED. 
+
+Audience Question
+
+Q: Is there any function or way to connect Pandas with pyspark?
+
+A: yes, import pandas with pd should work
+
+
+Audience Question
+
+Q: your views on switching carrer path to data analyst in mid career
+
+A: As early as possible- get certified for easier jump
+
+kaggle
+
+GCP is only data science ? Its not AWS or Azure platform?
+
+
+A: GCP has the advantage that they were the ones trying to index internet. SO BIG DATA -> GOOGLE is automatic champion.
+
+Hello City,(Updated time: 5pm to 7 pm)
+
+At the start of the game, each player is secretly assigned a role by God(Tejas). 
+
+Roles:
+1.	1 Detective: He can have a check if a person if Mafia or good citizen with God. One person every night.
+2.	2 Doctors: He can save a person whom he thinks can be next target of Mafia’s during night. Can save self.
+3.	1 Drunken: A good citizen who will be stating a phrase(given by Tejas) in every round of discussion.
+4.	7 Mafia: Their target is to kill citizens and win the city. Active during night. 
+5.	10 Normal Citizens: without power.
+Note: Detective , doctors and Drunken are also citizens only, just that they are having a special power.
+
+The game has two alternating phases: 
+1.	Night role:
+- Mafias will have a conversation on a different chat window and select an innocent citizen to be killed. 
+- Doctors will individually message God on skype to save a person whom they think is innocent and could be the next target of Mafia’s
+- Detective can send a name of a person on whom he wants to have a check. The response would be confirmed by God. (Thus, Detective in each round will get to know about a person if innocent/Mafia)
+
+Night to Day phase the city is woken up by God with declaration of result.
+
+2.	Day role:
+- Surviving players debate the identities of players and vote to eliminate a suspect. During  the discussion no one should be revealing their identity.
+
+So in night a person(may/may not) be dead and in Day a person will be dead based on vote count. 
+
+The game continues until a action achieves its win condition either:
+-All Mafia are dead
+OR       -The count of citizens equals the count of Mafia.
+
+
+shop.hak5
+usb kill 
+hunter.io
+osintframework
+admin - gophish
+
+
+ubuntu - install 
+parrot.os
+kali linux
+
+santiko- mobile
+
+rootkiller
+zone
+zv16 power tools
+
+shodan
+retire.js
+
+dc-sedc\jagdish.nayaka
+
+Manny Pacquiao
+Hammered Dulcimer
+okapi
+teletubbies
+Blue winged Kookaburra
+Burj Al Arab
+Somana Kunitha
+Ganymede
+
+INC000037114535
+
+EWT
+ITOM
+Transformation
+MTTR
+Automation ACC
+
+Selected Assignment: VF00WK00038796 - TSSI IT- Operations-TSSITH3410-H-Technology Specialist / SME - IT Infrastructure Management
+
+VF ES SA Clarify 10.1 V 1.2
+VF ES SA Clarify 11.5 V 1.1
+VF ES SA Clarify 11.5 V 1.1
+VF ES SA Clarify 11.5 V 1.1
+AUYA - Operational Documentation - SIGRA
+VF ES SA Intra Fintra Internacional V 1.6
+VF ES SA Lotus Notes V 1.2
+VF ES SA NICE PERFORM V 1.1
+
+VF ES SA Remote Connection in VPN V 2.0
+VF ES SA LDAP V 1.0
+VF ES SA SAP900
+VF ES SA SAP(ONO) V 1.0
+VF ES SA SERPA V 1.3
+VF ES SA SIEBEL GESTIONA V 1.0
+VF-ES SA TFCPI v 1.1
+
