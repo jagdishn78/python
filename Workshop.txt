@@ -1,0 +1,313 @@
+Requirement : Internal Tool Engine to automate L0 or L1 Manual Task. 
+
+Spocs 
+
+Project Lead and Design : 
+Coding Specialist :
+Data Analyst and Editor : 
+
+Abstarct : 
+
+An Internal centralised tool to be build, having integration with Control-M, ITSM and Monitoring Tools. The Information is to be used to identify the correct resolution to manual task. We will have auto pilot agent which is dicovering and validating the standard instruction feeded and take actions without any manual intervention. 
+
+Process : 
+
+1. Collect Preliminary Information from Incident Details. 
+
+	a) Incident Number
+	b) Incident Descrition 
+	c) Job Name 
+	d) Hostname/Node ID
+	e) Control-M Server Name
+
+2. Validate the details with Internal 
+
+HPOV : Get Details from HPOV – INC#, JOB Name, Control-M Server Name, Hostname 
+
+Control-M Server DB  Connection to Engine DB ( Control-M User ) with DB connectivity.
+
+Connectivity Between Agent Connection to Engine DB
+
+Need to Understand Jump server and logins to connect different Control-M agent machines. 
+Need to enable SSH connectivity to perform task or create process. 
+
+Collection of Data : 
+
+1.	Taking details from Files ( Cons – Memory Consumption, DB Usage, Time Consumption) 
+2.	Taking details from Control-M DB. 
+
+In case of DB Connectivity is not possible :: We create a SQL query to R/W flat file and the fetch the details from it required by the engine. ( Order ID, Jobname, Hostname) 
+
+Incidents - Get Details - Validate in Engine DB - If yes - Get details from Control-M DB ( order ID, Runas details, exit code ) 
+
+Options to connectivity Connections to different hosts 
+
+1.	Create a Control-M Job. 
+2.	Create Engine Agent – SSH Connection required to all agents between.  
+3.	Connection through Jump Servers. ( Need to Identify Jump Servers, LDAP User is required). 
+
+Upcoming Points 
+
+Detailed discussion : 
+
+Jump Server : uppsala2
+
+Your access request has been sent successfully to :
+
+- manoj.shahane@vodafone.com  
+- renjith.k02@vodafone.com  
+- vinod.tiwari2@vodafone.com  
+
+Please await feedback regarding the processing of your request from one of the above site administrators as they are responsible for granting access. Should you wish to enquire on the status of your request please contact them directly.
+
+s-dccontrolm-ratp
+
+IT-CEI-PC-A-BATCH_BOX000000000,IT-CACSZ-PC-C-MISC6 
+
+Further Discussion : 
+
+1.	Accurate network diagram 
+2.	Ports need to whitelisted 
+3.	Connectivity of Data flows 
+
+Date : 25 Oct 2019 
+
+We Discussed on : 
+
+Mode of Communication from ITSM Incident to Remote Machine. 
+
+-> Source will be ITSM or HPOV or Any other Ticketing Tool. 
+-> Engine will take Incident details and Job name. 
+-> it will match with the internal DB details if matched it will connect with Control-M DB. 
+-> Post connection Established it will get more details about the job like order id, run as user etc. 
+-> it will again connect to Engine database to select correct action of steps to be performed.
+-> it will then connect to the target machine to perform the acitvity. 
+
+In detail discussion the internal working on Self Heal Engine 
+
+-> Get the details via ITSM or any other tool. (Decide How its going to connect with ITSM to capture data) 
+-> Data validation within Engine and with Control-M DB. ( Job Name Identifiers ??) Decide how data is going to be validated.
+-> Data validation with Control-M Server DB. ( Job Name Identifiers ??) Decide how to get the details Job from Control-M Databse. 
+-> Monitor the progress of the steps and track till completion or Unsucessfull ( Need to identify the tacking method). 
+-> Alert Mechanism for Job Status. 
+-> Design the SOP template for Engine. ( Data collection in the form of SOP Template) - Done 
+-> Engine is to reassign tickets to GSD in case of any internal step failures.  
+
+Alert Scenerios : 
+
+-> File Transfer taking long time : We will compare the average execution time and actual time taken to run, and accordingly alert for long running. Average time taken is to be given by Job requestor in SOP template. 
+z
+-> Job Long Running : We will compare the average execution time and actual time taken to run, and accordingly alert for long running. Average time taken is to be given by Job requestor in SOP template. 
+
+-> Network Failure : We will monitor the Process created by the engine to perform specific task at agent machine. In case ny of the process is unable to track, Engine will raise an alert. 
+
+
+1. We will validate the Incidents by Jobname which matches the list. We will process only those Job Failures further. 
+2. Incidents matched with Jobname are checked with Control-M server DB to get exit code and other details.
+3. once we get matched Job details from control-M server we will proceed to next step. 
+
+Probability : 
+
+Tickets creation should be kept on Hold util we process the SOP steps and then resolve. 
+or
+Create Incident and assign to a Automation Group and then resolve. 
+or
+Create Incident and assign to a respective team with Automation user ID as assignee and then resolve.
+or
+In all other cases or any internal failure, INC can be assigned to GSD to reassing to correct group. 
+
+30th Oct 2019 :
+
+Creation of Template to be finaliszed as per the SOP provided. 
+
+Steps
+
+1st -> Validated and Uploading SOP Details.
+
+2nd -> Filter with Jobname : 
+	a) Filteration with HPOV with Job Names
+        b) Filterationn with Ema.out with Job Name
+
+3th -> Data Fetching from Control-M Server DB
+
+4th -> Once Data Feteched Engine will decide the relevant SOP and assign task.
+
+5th -> Engine will submit the task and track the progress and provide the status of the each task performed. 
+
+6th -> Engine will generate alert in case it fails to perform any of the task given. 
+
+REQ000032053073
+
+MIM 
+
+Introudction CTM to UK Local Market 
+
+1. Enhancement to daily BAU activities and solutioning reoccuring Incidents 
+2. Auto-Remediation Tool - To be built for automating Manual tasks. 
+3. Automation Anywhere - RPA capabilities - (Automated Monitoring)
+
+To Minimise Reoccuring Actions
+30% Ticket Reduction
+Road Blocker 
+SO - Allignment
+
+CIO Visit - Nominating. 
+OMI - Intrgartion of all products to OMI. 
+Orchastrator 
+Core Enabler -> SMEs
+
+Actions
+SOPs
+
+User Provision 
+Health Check 
+ROI --- FTE --- Benefit
+Smart Monitor --- 
+
+Spain UK italay GDC
+
+- Automated through Control-M 
+- Script Solution
+
+Spain :: 
+
+VF00WM00028624
+
+-> 1st Solution : 
+
+Self Heal Engine. 
+
+
+-> 2nd Solution : 
+
+We will create folders as per the SOP and then order the folder. 
+
+-> Scenerio 1 : File sequencing and checking + Rerun Job 
+
+-> Scenerio 2 : File missing + File checking with old dates + regenrate the file + copy the file + rerun Job
+
+-> 
+
+....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+Automated Workflows
+
+Real-life solutions demonstrate how Ayehu enables IT professionals to design and implement IT processes and create automated incident resolution procedures.
+
+Download the Workflow Templates Library Datasheet 
+
+Automate Server Restart / Shutdown Procedure
+How it Works: Execute a sequential server restart or shutdown procedure based on a list of servers from an external text file or any other data source. Each server can be restarted or shutdown according to preset actions.
+
+Shutdown Procedure
+Check and Clean Disk Space on Servers
+Daily Maintenance: Check and Clean Disk Space on Servers
+How it Works: Perform real-time analysis and monitor the status of critical situations that may impact the core functionality of your business. Initiate scheduled workflows to maintain and administer disk space levels based on a list of servers from an external text file. You can check disk space for each server and define a threshold level to execute cleanup script when disk space is low. Create your own scripts or simply delete files or folders with eyeShare file management actions.
+
+Check Backup Log
+How it Works: Analyze your backup status and perform an appropriate action when needed. eyeShare can read your backup log files or alternatively receive backup results via email. eyeShare can analyze text, search for errors or warnings, send a notification to the responsible system administrator and even restart the backup process on your backup server. This process helps you to detect problems in your backup procedures and reduce backup time to a minimum.
+
+Check Backup Log
+Check if File Exists
+Check if File Exists
+How it Works: Check if a file exists, copy to a specific location and verify that the operation is successful. If the file is not copied, eyeShare triggers an alert to the system administrator. If the file is not found, you can search and select a different file location.
+
+Shutdown Procedure
+Check Process Counter Threshold
+How it Works: Check if returned result for process counter is higher than requested threshold. eyeShare sends an alert to terminate process or wait for 5 seconds to re-check process counter. When a process is not terminated, eyeShare sends an alert to the system administrator.
+
+Check Email Services (POP3/SMTP)
+How it Works:  Monitor your organization email services and utilize the eyeShare Schedule Action mechanism to handle incidents. With eyeShare you can send an auto-reply message to any internal or external address, define the waiting period for a reply and trigger an action based on any pre-condition or incident. When eyeShare detects a problem, an alert is sent containing the source and message body of the email relating to a specific incident and an indicator is shown on the eyeShare dashboard.
+
+Check Email Services
+Manage Servers and Service Availability
+Manage Servers and Service Availability
+How it Works:   Read a list of servers or devices from an external file and ping/telnet each one on the list. Run the eyeShare “While” procedure to read each line in a file and execute a command for each server or device. Capture the return value and execute tasks to fix or handle any situation.
+
+Check Web Site Availability
+How it Works:  Check websites located on three different servers. Create URLs and parallel branches for each server. Initiate separate workflows to check server activity. When a URL is not available, eyeShare sends an alert sent to the system administrator
+
+Check if File Exists
+Filter Analyze Windows Event Log
+Filter & Analyze Windows Event Log
+How it Works:  Filter and analyze event logs (log files or Event Viewer) based on event type, dates, strings etc. For example, you can read the security event log and filter based on a “Login Failed” string. The result set is converted into an HTML table and sent to the system administrator.
+
+Microsoft IIS Troubleshoot & Recovery
+How it Works: Execute a set of checks and recovery procedures for Microsoft IIS. To check if a website is down simply ping the web server. If the server is up, and the system telnet port 80 is working you can check the status of the IIS service. At each stage, eyeShare sends alert to the relevant IT staff. When Microsoft IIS is not running, you can perform a remote restart operation via email. remotely and even define the timeout field for a user response.
+
+Microsoft IIS Troubleshoot & Recovery
+Incident Notification and Escalation
+Incident Notification and Escalation
+How it Works: Check when an incident is resolved or communicate with your IT staff to escalate problem. When IT staff responds, eyeShare initiates an automatic follow-up message after a pre-defined timeframe. When the problem is resolved the incident is closed and a recovery notification is distributed. If the problem remains open, eyeShare sends an alert to the system administrator.
+
+Search Specific Data in Log Files
+How it Works:  Enables IT administrators to read log files and filter the lines that contain word errors. Each result set is converted to an HTML table and distributed via email.
+
+Filter Analyze Windows Event Log
+Filter Analyze Windows Event Log
+Troubleshoot System Tasks
+How it Works:  Run an automated troubleshooting processes or system test to detect system and application faults. Generate reports that include operating system data, CPU usage, disk space, memory usage, process counter, and service status. All status reports are sent to the system administrator.
+
+Integration with Service Desks
+How it Works: Collect server performance information and run a web service to open a ticket in the service desk system.
+
+Integration with Service Desks
+System Tasks and Maintenance Work
+System Tasks and Maintenance Work
+How it Works: Run automated maintenance tasks for each server based on a list from an external text file. Run the eyeShare “While” procedure to execute a shutdown procedure and perform a ping operation to check server status. When a server remains up, an alert is sent to the system administrator. Run automatic restart procedure for each server when maintenance tasks are complete.
+
+Automate Server Log-off Procedure
+How it Works: Execute an automatic log-off procedure based on a list from an external text file.
+
+Check Email Services
+Check Anti-Virus Service is Running
+Check Anti-Virus Service is Running
+How it Works: Run the eyeShare Process Counter to identify the number of active services or processes on a requested machine and detect if anti-virus software is running on any of your servers.
+
+Execute SQL Query and Send Results in HTML Format
+How it Works: Schedule and execute automated SQL queries. eyeShare executes SQL queries and displays a results set. Each results set is converted into an HTML table and can be sent via email to the system administrator.
+
+Execute SQL Query and Send Results in HTML Format
+Migrate Import Database Tables to External File
+Migrate / Import Database Tables to External File
+How it Works: Run an SQL query to read data from an SQL table and write results to an MS Excel file.
+
+
+........................
+..................................
+.................................................
+
+
+1.	Collect all the steps for Spain and GDC Database Jobs. 
+2.	Determine Minute the detailed steps for Spain.  ( Timeline - 2 Week )
+3.	Prepare 2-3 POC Jobs for Spain with Control-M Job Automation where a job is used to rerun or force ok another job.
+4.	To build a tool which will identify if it’s a control-m error or any another tool event. Then diversify it accordingly.
+5.	Identify dependencies for Project.
+6.	Finalize VM or Infra Requirement for Project. 
+7.	Prepare HLD for Project. 
+
+
+Digital-usr01
+Vodafone@321
+vpce-041d34e3c994d138d-lci276il.vpce-svc-024fc796185868c28.eu-central-1.vpce.amazonaws.com 
+
+Login to Unix server: ESDAP1HR.prod.airtel.es with Username: asradmin
+Go to Path : cd /documentum/AO/monitorAgenteDeDuplicados/logs/
+Check the log monitorAgenteDeDuplicadosPDF_YYYYMMDD.log (where YYYYMMDD is date). Grep for "[ERROR] The Agent Email is restarted the maximum times: 3, please check the error messages."
+Check whether script AgentEmail.sh is running or not using, use command -> ps -ef | grep AgentEmail.sh
+If Process is not running, First kill all existing AgentEmail.sh processes 
+Go to Path : cd /documentum/duplicados/Email/Agente
+Execute command : nohup ./AgentEmail.sh &  
+Check the process AgentEmail.sh is running or not. If its still not : Follow below steps
+  
+
+
+
+
+
+
+
+
+
+
+

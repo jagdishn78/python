@@ -1,0 +1,41 @@
+A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud.
+We can manage network conf from VPC easily. For eg : 
+Create a public subnet for you webservers that has internet access 
+Create a private subnet for DBs, application that has no internet access.
+Create multiple layers of security groups, network access control list
+
+AWS Storage Gateway connects an on-premises software appliance with cloud-based storage to provide seamless integration with data security features between your on-premises IT environment and the Amazon Web Services (AWS) storage infrastructure. You can use the service to store data in the AWS Cloud for scalable and cost-effective storage that helps maintain data security.
+Types
+Gateway stored Volumes- It keeps data set on site. Storage gateway then backs this data up asyncronously to Amazon S3.
+Gateway Cache Volumes - Most frequently accessed data is stored locally. Entire data set is storedin S3. No internet No data. 
+Gateway Virtual Tapes Library(VTL) - Data can be stored in virtual tape. Each virtual tape is stored in Virtual Tape Library backed be amazon S3 or Virtual Tape Shelf backed by Amazon Glacier. it supports Netbackup, Veam etc. 
+AWS SQS - Simple Queue Service : 
+Amazon Simple Queue Service (Amazon SQS) is a web service that gives you access to message queues that store messages waiting to be processed. With Amazon SQS, you can quickly build message queuing applications that can run on any computer.
+Types of Queues - Standard Queue or FIFO Queues
+Amazon Simple Notification Service (SNS) is a flexible,fully managed pub/sub messaging and mobile notifications service for coordinating the delivery of messages to subscribing endpoints and clients.
+Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.
+DNS services
+Latency Based Routing
+Weighted Round Robin
+Amazon ELB Intergration
+Health Checking
+Domian Registration 
+The AWS::EC2::PlacementGroup resource is a logical grouping of instances within a single Availability Zone (AZ) that enables applications to participate in a low-latency, 10 Gbps network.
+Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, and IP addresses. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zones.
+ELB - Types :
+Application LB
+Network LB
+Classic LB
+
+
+
+
+
+
+
+
+
+
+
+
+

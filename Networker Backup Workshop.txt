@@ -1,0 +1,108 @@
+Network Unavailbility -- (Connection to Client is Failed)
+
+Check that the fully qualified domain name (FQDN), short-name, and IP all return correctly with nslookup. 
+Do a ping and nslookup, from both directions, Client and NetWorker server sides. Use both the Hostname and IP address.
+Check any firewalls that NetWorker ports are not blocked. 
+Check if Hosts file entries are correct as per the requirement. 
+To Cross check  Go into the NMC GUI
+		Open CLIENT Properties
+		Open Global's 1 of 2.  
+		In the Alias text area and add the Long Name, Short Name, and IP address of the client.
+Check if NetWorker Services/daemon is started on the client machine. Restart the NetWorker client services.
+If all the Above are good and network is up then rerun the Job and wait for Job Completion. 
+If all the Above are good then rerun the Job and still the Network is down then assign to L2.  
+
+uknp54sr-vf
+Networker Agent Issue : 
+
+Check if NetWorker Services/daemon is started on the client machine. Restart the NetWorker client services. 
+For example : nsrexecd service 
+Check the port for networker agent is avaialble. 
+If all the Above are good and networker agent in clinet machine is up then rerun the Job and wait for Job Completion. 
+After all steps, still the Networker agent is down then assign to L2.
+ 
+
+Media Management Issue -- (Storage Node not coming to Ready State)
+
+Check whether the nsrsnmd is up and running.    
+        - Windows : tasklist | findstr nsrsnmd         
+            - Linux : ps -ef | grep nsrsnmd    
+If Services are down start the the services. 
+Confirm whether the Connectivity between the Storage Node and NetWorker Server and Vice Versa.    
+Check whether the ports are open that is the Service Ports from 7937 - 9936 and 111 Port for Port Mapper.
+If all the Above are good and storage media is online then rerun the Job and wait for Job Completion. 
+If all the Above are good and still the Storage Node is not coming up then assign to L2.   
+
+
+Database Backup Server Issue -- Error: Failed to set the database backup server. permission denied
+
+Check that the fully qualified domain name (FQDN), short-name, and IP all return correctly with nslookup. 
+Do a ping and nslookup, from both directions, Client and NetWorker server sides. Use both the Hostname and IP address.
+Check if Database Services/daemon is started on the machine.Restart the services in case of not. 
+Check any firewalls that NetWorker ports are not blocked. 
+
+Long running backup Issue -- (Backup for client xxx is taking more time) 
+
+Check if the process
+
+
+
+DC-BCKUP-PJ-C-DC-VOBKR2SS-HKJUKEBOX-RECYCLE 
+
+https://community.emc.com/people/Vakil/blog/2019/02/14/understanding-networker-client-direct
+
+
+1.Check if NetWorker Services/daemon is started on the client machine.  Restart the NetWorker client services.
+2.Check the local network. Do a ping and nslookup, from both directions, Client and NetWorker server sides. Use both the Hostname and IP address.
+3.Try to run a backup from the client
+4.Go into the NMC GUI and open CLIENT Properties, and open Global's 1 of 2.  In the Alias text area and add the Long Name, Short Name, and IP address of the client.
+5.Check the Host entry on the NetWorker Server as well as Client.
+6.Does the Client have a dual NIC? If so disable one NIC or check the DNS entry in your DNS server and make sure both are listed. Add them both into the HOSTS file.
+7.Put NetWorker Server name in the "server file" on the client. On Windows: generally it is in location C:\Program files\legato\nsr\res\servers. On Unix change to the directory /nsr/res/servers
+8.Add the entry in servers file of client for the backup server. After putting entry in servers file, restart Networker services on client.
+9.In DNS, change the Forward and Reveres lookup and add the IP address in DNS.
+10.Check your login name/password if you are running backups with separate login
+
+1) Ensure that the NetWorker services are running on the NetWorker client:    
+      Windows: tasklist | findstr nsr      
+      Linux: ps -ef | grep nsr      
+      Note: the NetWorker server service is nsrexecd (NetWorker Remote Exec Service)      
+           
+      If it is not running attempt to start the process:    
+    
+      Windows: net start nsrexecd      
+      Linux: /etc/init.d/networker start       
+      Note: confirm that the service starts by running the tasklist OR ps commands again.    
+    
+      2) Ensure that the NetWorker server and client can communicate and resolve each others hostnames/IPs, use ping and nslookup commands on the NetWorker server and client.    
+    
+      Note: confirm that the fully qualified domain name (FQDN), short-name, and IP all return correctly with nslookup. If a response fails, host file entries may need to be created for the host which failed to resolve using DNS. Any network/name resolution issue(s) should be resolved by your domain/network administrator.    
+      
+      3) Confirm that the NetWorker service/connection ports are not being blocked by OS or network firewalls.    
+    
+      Service ports: 7937-9936    
+    
+      Connection ports: 0-0      
+      Note: See the NetWorker Security Configuration Guide for your NetWorker version(s) for more information on firewall and port settings. These documents can be found at https://support.emc.com    
+    
+      
+      Once the above has been confirmed you should be able to remotely connect to the NetWorker client from the NetWorker server (and vise versa) by running the following command:    
+    
+      nsradmin -p nsrexec -s client-name      
+      This command will open a remote connection to the nsrexecd service on the other (client/server) host      
+      User-added image      
+      Note: If the nsradmin prompt appears the connection has been made. Enter quit to exit out of the prompt    
+
+1. Open NetWorker Management Console 
+2. Select the correct Backup Group in GUI Console
+3. Select the Client which is having Issue
+4. Open alert log for analysis
+5. Troubleshoot as per the error
+6. Please refer Column J for Further Resolution Steps
+
+
+
+
+
+
+

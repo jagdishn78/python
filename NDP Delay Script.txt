@@ -1,0 +1,100 @@
+  %%$OYEAR./%%OMONTH./%%ODAY
+  %%CALCDATE %%ODATE -1
+  %%NODEID
+  %%TIME
+
+   ##############################################################################################
+
+#!/bin/sh
+F=`date '+%Y%m%d 0700'`
+T=`date '+%Y%m%d 0710'`
+ctmlog LIST $F $T | grep "NEW DAY PROCEDURE ENDED"
+if [[ "$?" == "0" ]]
+then
+echo "found"
+else
+echo "Urgent: New Day Process is delayed" | mailx -s "New Day Process is delayed" abc@xyz.com
+fi
+
+    ##############################################################################################
+
+Basically, at 15 minutes after midnight if COUNT(*) on the AJF is not > 5000 it pages (normal load is about 9,500).
+
+ 
+ctmlog list %%$ODATE 1159 %%$ODATE 1211 | $HOME/ctm_server/my_server/scripts/ctmlog_ok.pl
+
+     ############################################################################################### 
+
+In the script I have this -
+
+#!/usr/bin/perl
+my( @MUSTFIND ) = (
+
+        "NEW DAY PROCEDURE STARTED",
+        "CONTROL-M LOG CLEANUP STARTED",
+        "CLEANUP ENDED. DAYS=",
+        "DAILY SYSTEM STARTED",
+        "DAILY SYSTEM ENDED",
+);
+ 
+       ################################################################################################ 
+
+%mustfind = map { ($_,1) } @MUSTFIND;
+my( $rin ) = q();
+vec($rin,fileno(STDIN),1) = 1;
+
+if ( select($rout=$rin, undef, undef, 10) ) {
+
+        my( $logline );
+
+        while ( $logline = <STDIN> ) {
+                my( $msgid,$desc ) = (split /\|/o,$logline)[1,7];
+                if ( $desc ) {
+                        foreach my $mf ( @MUSTFIND ) { 
+                                if ( $desc=~/$mf/ ) {
+                                        $desc =~ s/\s+/ /go;
+                                        print "$msgid|$desc\n";
+                                        delete $mustfind{$mf};
+
+                                }
+                        }
+                }
+        }
+
+} else {
+
+        die "No input found.\n";
+}
+
+if ( %mustfind ) {
+        foreach ( keys %mustfind ) {
+                print "Did not find - $_\n";
+
+        }
+ 
+        exit 1;
+}
+exit 0;
+
+
+      ###############################################################################################
+ 
+
+#!/bin/sh
+
+From=FromMail_ID
+To=ToMail_ID/s
+cd $HOME/ctm_server/proclog
+CELogFile=`ls CE*.log | head -1`
+grep  "Download confirmation recieved from EM" $CELogFile | tail -1
+if [[ "$?" == "0" ]]
+then
+echo "NDP Completed."
+else
+mail -s "NDP GOT DELAYED! PLEASE CHECK" -r $Sender "$ToList"
+fi
+
+      ################################################################################################ 
+
+
+This is a sample screen of our current NDP daily validation that we have as part of Control-m user Exits CTMUE104 and CTMUE106. If any NDP step is detected as failed. we issue an e-mail with full log of all validation steps.

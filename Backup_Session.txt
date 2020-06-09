@@ -1,0 +1,71 @@
+Issue Keyword : Remote session Error - connection refused OR Connection time-out 
+Action Required : probe checking. ( It checks network activity, hostname resolution, etc)
+Command : savegrp -pvvv -c (client or group name) -g (group)
+Output of Probe it attached
+If the connection is OK, Rerun the Job
+
+Issue Keyword : Failed to connect storage node
+Action Required : 
+1. Stop nsr services on client node. 
+Command : netstop nsrexecd
+2. Check if the process (PID) are killed or not. We can get PID from output. If required we need to kill the hung process. 
+3. Start nsr Services on client node. 
+netstart nsrexecd 
+4. Rerun the Job. 
+
+Issue Keyword : VSS Issue 
+Action Required : Reassign to OS team to Restart the writer services at client node.  
+Command : NA
+
+Issue Keyword : No route to Host Issue 
+Action Required : Reassign to Unix team for checking route. 
+Command : NA
+
+
+Login to server windows
+restart the writer services 
+
+Commands to be given by backup team
+
+VSS - Keyword.
+
+/opt/network/savegroup/
+
+Go to the server 
+cd tmp/NW_LCK
+check for lock file
+nwjobs | grep group name -- it will show all the status group execution status.
+
+vssadmin 
+savegrp -vvv 
+rpm -qa | grep -i lgto
+ 
+
+nwjob 
+nwgrpstat (Provide Group Name) 
+
+
+
+If the Job is failed again. Try to enable and disable client node. 
+
+
+
+
+2/ enable and disable client node 
+
+savegrp -pvvv -c (client or group name) -g (group) 
+probe checking. ( It checks network activity, hostname resolution, etc) 
+
+DC-BCKUP-PJ-C-DC-VOBKR2SS-HKJUKEBOX-RECYCLE , DC-BS1-PJ-TWS-A0JUKEBOX_RECYCLE_10
+
+Job Rerun on Failure
+adjust time of the Job or Script Level Time frame. 
+
+DC-SAPHO-PJ-C-IT-DB-OP1-SAP-RD
+DC-SAPHO-PJ-C-IT-DB-SRP-SAP-RD
+
+Make the job cyclic. 
+
+
+
+

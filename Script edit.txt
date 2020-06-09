@@ -1,0 +1,366 @@
+vi editor
+
+set number
+set nonumber
+
+d$ delete the right rest of the line from crusor 
+d^ delete the left rest of the line from crusor 
+
+
+%s/EXTERNAL/DUMMY/ - change the external word to Dummy 
+
+ssh-keygen -b 1024 -t rsa -N Tejas
+
+-N passphrase
+
+Doubts
+
+TWLLIN05 - DL or Group for TSS DWH team.TSS DWH 
+TWMCM701 - Escalation in case of KO team is missing. 
+TWMRDA01 -  Escalate to Team ??
+TWMTL217 : As per SOP, we need wait for the file. How much time ?
+TWSSCO05 : Until  further notification resolve incident mentioning “DWH is following with user through email” Need Update
+
+
+TWLLIN05
+TWMCM701
+TWMTL217
+TWSTDS01
+TWSUIC01
+
+
+Could you please confirm what actions needed if the file is arrived after 7:45
+
+assign the INC to TSS COMERCIALES AO OPS-ES  to send the missing file
+you have to request the missing file from TSS COMERCIALES AO OPS-ES 
+
+
+C:\Users\mshivtar\AppData\Roaming\npm\ctm reporting report::get Jobs_Definitions-Out_Conditions_1 CSV -o D:\BMC_Control-M\temp\Jobs_Definitions-Out_Conditions_1.csv
+
+
+TWLLIN05 
+TWMCM701
+TWMTL217
+TWSTDS01
+TWSUIC01
+DCTMPDFAO1
+FECLA7401
+IRIS0005
+SBLKBI07
+
+...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+select job_name NAME,DESCRIPTION,TASK_TYPE TYPE,NODE_ID NODE,OWNER,APPLICATION,CREATION_DATE CREATEDATE,job_id ID,CYCLIC,CYCLIC_TYPE CYCLICTYPE,APPL_TYPE APPLTYPE,GROUP_NAME "GROUP",SPECIFIC_TIMES SPECIFICTIME,MEM_LIB COMMAND1,MEMNAME COMMAND2,CMD_LINE COMMAND3,DAYS_CAL CALENDAR1,WEEKS_CAL CALENDAR2,MAX_WAIT MAXWAIT,MAX_RERUN MAXRERUN,FROM_TIME RUNWINDOW1,TO_TIME RUNWINDOW2,DAY_STR MONTHDAY,W_DAY_STR WEEKDAY,MONTH_1 MONTHLIST1,MONTH_2 MONTHLIST2,MONTH_3 MONTHLIST3,MONTH_4 MONTHLIST4,MONTH_5 MONTHLIST5,MONTH_6 MONTHLIST6,MONTH_7 MONTHLIST7,MONTH_8 MONTHLIST8,MONTH_9 MONTHLIST9,MONTH_10 MONTHLIST10,MONTH_11 MONTHLIST11,MONTH_12 MONTHLIST12,ACTIVE_FROM ACTIVEFROM,ACTIVE_TILL ACTIVETILL,JOB_ORDER "ORDER",CREATION_USER CREATEUSER,CHANGE_USERID CHANGEUSER,CHANGE_DATE CHANGEDATE,DATA_CENTER DATACENTER,CREATION_DATE INSERTDATE,SCHED_TABLE CHAIN_NAME from DEF_TABLES_AND_JOBS;
+
+........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+Create job to hold the Job 
+Create job to release job 
+
+....................................................................................................................................................................................................................................................................................................................................................................
+
+vg001ahr% ctmpsm -H 25td0
+Arguments problem -H, valid are :-CHILD
+
+usage:
+ctmpsm -CHILD    <orderid> [<tasktype>]
+       tasktype:B=JOB, D=DETACHED, C=COMMAND, U=DUMMY, X=EXTERNAL
+
+ctmpsm -IMPORT_CAL <ECS exported file name> [OVERWRITE]
+
+ctmpsm -LISTCAL [<Calendar name>] [<Calendar year>]
+
+ctmpsm -LISTALL  [<ODAT|TIME|APPLICATION|FILENAME|ALL|ALLFIELDS|ALLFIELDS_FULL>] [-SORT <ORDERID|JOBNAME>]
+
+ctmpsm -LISTJOB  <OK|NOTOK|EXECUTING|CYCLIC|WAITTIME|WAITCONFIRM> [-SORT <ORDERID|JOBNAME>]
+
+ctmpsm -LISTSUBAPPLICATION <application> <sub application> [<scheduling date>]
+
+ctmpsm -LISTAJFFLD <folder name>
+
+ctmpsm -FOLDER  <-LISTFOLDER <folder name>|-UPDATE <row_number> <udaily name>|-ADD <folder name> <udaily_name>|-DUDAILY <row_number>|-REMOVE <folder name>|-LISTJOBS <row_number> [FULL]>
+
+ctmpsm -LISTOUTPUT <orderid> [-OUTPUTNUMBER <number|ALL>]
+ctmpsm -LISTDETAILS <orderid>
+ctmpsm -LISTFULLDETAILS <orderid>
+
+ctmpsm -UPDATEAJF <orderid> <HOLD|FREE|DELETE|UNDELETE|RERUN|CONFIRM|SETTOOK|STATISTICS|CONDADDIN <cond> <date> <AND|OR>|CONDADDOUT <cond> <date> <+|->|CONDDELIN <cond>|CONDDELOUT <cond>
+
+ctmpsm -FULLUPDATE <orderid>
+  [ -SUBAPPLICATION  <sub application name> ]
+  [ -APPLICATION     <applic name> ]
+  [ -HOSTGRP         <name> ]
+  [ -FILE_PATH       <path> ]
+  [ -FILE_NAME       <filename> ]
+  [ -CMDLINE         <string> ]
+  [ -RUN_AS          <username> ]
+  [ -MAXRERUN        <value> ]
+  [ -TIMEFROM        <earliest submission time> ]
+  [ -TIMEUNTIL       <latest  submission time> ]
+  [ -TIMEZONE        <time zone name> ]
+  [ -PRIORITY        <job priority> ]
+  [ -CRITICAL        Y|N ]
+  [ -END_FOLDER      Y|N ]
+  [ -CYCLIC          Y|N ]
+  [ -INTERVAL        <45d(days) | 1080h(hours) | 64800m (minutes)> ]
+  [ -OVERRIDEPATH    <alternative directory> ]
+  [ -MAXWAIT         <days> ]
+  [ -INCOND          <condition> <dateref>|ODAT  AND|OR ]
+  [ -OUTCOND         <condition> <dateref>|ODAT  ADD|DEL ]
+  [ -VARIABLE        <varname> <expression> ]
+
+ctmpsm -UPDATESUBAPPLICATION <application> <sub application> <HOLD|FREE|DELETE|UNDELETE|RERUN|CONFIRM> [<scheduling date>]
+
+ctmpsm -UPDATEFOLDER <folder> <HOLD|FREE|DELETE|UNDELETE|RERUN|CONFIRM>
+ctmpsm -XML  [<ODAT|TIME|APPLICATION|FILE_NAME|ALL|ALLFIELDS>] [-SORT <ORDERID|JOBNAME>]
+
+.............................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+#!/bin/sh    
+# This script can perform mass actions on jobs in the AJF.
+# It should be used instead of 'ctmpsm -updategroup' option.
+# The script accepts three parameters:
+# $1 = application name
+# $2 = group name
+# $3 = action (e.g. HOLD|FREE|DELETE|UNDELETE|RERUN|CONFIRM|FORCEOK|STATISTICS|)
+ 
+   
+  jobs=`ctmpsm -listgroup $1 $2 | tail +4 | awk '{print $1}'` 
+   
+  for job in $jobs
+do
+        ctmpsm -UPDATEAJF $job $3
+done
+
+
+$1 = orderid
+$2 = action 
+
+ctmpsm -UPDATEAJF $job $3
+
+ctmpsm -LISTALL | grep 'Order Date\|APPLICATION Name'
+ 
+Order Date give Odate number you would like to check and
+
+Applciation Name - Provide Name you would like to check for.
+
+ordreid=$(ctmpsm -listall ALLFIELDS_FULL | grep FOLDER | grep %%ODATE | cut -c-8) && ctmpsm -UPDATEAJF $ordreid HOLD && ctmpsm -UPDATEAJF $ordreid DELETE
+
+ordreid=$(ctmpsm -listall APPLICATION | grep "DC_TEST1" | grep date '+%Y%m%d' | cut -c-8) && ctmpsm -UPDATEAJF $ordreid HOLD && ctmpsm -UPDATEAJF $ordreid DELETE
+
+
+
+orderid=$(ctmpsm -listall APPLICATION | grep "DC_TEST1" | cut -c-8) && ctmspm -UPDATEAJF $orderid HOLD 
+
+today_date=`date +%Y%m%d`
+pre_date=`date -d "3 days ago" +"%Y%m%d"`
+
+for line in `cat /controlm/joblist`
+do
+ctmlog LISTJOBNAME $line $pre_date 0000 $today_date 1200 | grep 'ENDED OK'
+exit_code=$?
+if [ $exit_code -eq 0 ]
+then
+    echo "JOB: $line has ENDED OK ON: `ctmlog LISTJOBNAME $line $pre_date 0000 $today_date 1200 | grep 'ENDED OK' | head -1 | awk '{print $1}'`" >> /tmp/final.dsp
+else
+    echo "JOB: $line has not ENDED OK SINCE $pre_date" >> /tmp/final.dsp
+fi
+done
+
+
+.............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+for orderid in `cat /controlm/orderlist2`
+do
+ctmspm -UPDATEAJF $orderid HOLD 
+exit_code=$?
+if [ $exit_code -eq 0 ]
+then
+echo "Job with Orderid $orderid kept on HOLD" 
+else 
+echo "Job with Orderid $orderid is not found"
+fi
+done
+
+..................................................................................................................................................................................................................................................
+
+#!/bin/bash
+
+psdetails=$(ps -ef | grep "$1" | grep -v "grep" | grep -v "heapDataExtractor")
+# Get the pid
+pid=$(echo $psdetails | awk '{split($0, a," "); print a[2] }')
+
+set echo off
+
+$JAVA_HOME/bin/jmap -heap $pid  > jmapRawData.txt
+
+let headerCount=0
+
+set echo on
+
+while read line
+do
+#do some processing and echo the output
+done < jmapRawData.txt
+
+..........................................................................................................................................................................................................................................................................
+
+ctmpsm -LISTALL  [<ODAT|TIME|APPLICATION|FILENAME|ALL|ALLFIELDS|ALLFIELDS_FULL>] [-SORT <ORDERID|JOBNAME>]
+
+...........................................................................................................................................................................................................................................................................
+
+If you are running your Control-M on Unix you could export your jobs with ctmexdef and then work with these files.
+
+Export jobs:
+#!/usr/bin/bash
+
+for TABLE in `ctmpsm -SCHEDTAB -LISTTABLE "*" | sed '1d' | awk '{print $2}'`
+do
+   ctmexdef -TABLE $TABLE -ACTION DEFINE -FILE /tmp/${TABLE}.out
+done
+
+Print duplicate jobs:
+grep ctmdefine /tmp/*.out | uniq -
+
+.........................................................................................
+...........................................................................................................................................................................................................................................................................
+
+You sure can. One way to accomplish this is through shouts. For
+example, how I do it is as follows:
+
+First, create a batch file in an area accessible by Control-M Server.
+Inside the batch file you will have the following commands:
+
+REM On-Demand Loader to Kill a Job in Control-M
+REM October 4, 2006 Robert Stinnett
+ctmorder -SCHEDTAB KILLJOB -JOBNAME KILLJOB -ODATE ODAT -FORCE Y
+
+Now, inside Control-M Server setup a shot destination along these lines:
+
+Destination Type: Program
+Address Type: Server
+Physical Name: Point to your program (batch file) here. i.e.,
+C:\killjob.bat
+
+Now, go to your Control-M Desktop and create a JOB called KILLJOB.
+
+The Command to run will be: ctmkilljob -orderid %%KILLORDER
+
+Save the job and write it to EM.
+
+Now in the job that is problematic that you might want to kill simply
+add the following:
+
+In the SET tab:
+
+%%\KILLORDER = %%ORDERID (Get the ORDERID of the job)
+
+In the POST-PROC tab:
+
+When EXECTIME > x minutes
+SHOUT to kill_job
+
+That should do the trick -- let me know if you need any more details!
+
+...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+
+#!/usr/bin/ksh
+
+. ~/sched.env
+
+#FUNCTIONS#
+function die
+{
+	echo $1
+	mailx -s"Error executing Job $SCHED_JOB_NAME" $MAIL_TO < "$1"
+	exit 2
+}
+
+function success
+{
+	cat $LOG
+	exit 0
+}
+
+function error
+{
+	echo "--------------------------------------------------------------" >> $LOG
+	echo "******************** Finished with ERROR! ********************" >> $LOG
+	echo "--------------------------------------------------------------" >> $LOG
+	mailx -s"Error executing Job $SCHED_JOB_NAME" $MAIL_TO  < "$LOG"
+	cat $LOG
+	egrep "$Priority" $NOTIFICATION
+	exit 2
+}
+
+#LOG#
+	export SCHED_LOG_DIR="$HOME/autosys/log"
+
+	export LOG_DIR=${1:?You must supply the LOG dir}
+
+	[ -d $SCHED_LOG_DIR/$LOG_DIR ] || die "Log dir not found ($LOG_DIR)"
+	[ -w $SCHED_LOG_DIR/$LOG_DIR ] || die "Log dir not writeable ($LOG_DIR)"
+
+	export SCHED_JOB_NAME=${__job_name:-UNKOWN_JOB_NAME}
+
+	export LOG="$SCHED_LOG_DIR/$LOG_DIR/$SCHED_JOB_NAME.$(date '+%y%m%d%H%M%S')"
+
+#SH#
+	export SCRIPTS_DIR="$HOME/raid-prj/scripts"
+
+	export SH_SCRIPT=${2:?You must supply the shell script name}
+
+	case $SH_SCRIPT in
+		flow_ctrl)	export SCRIPT="$SCRIPTS_DIR/load/raid-flow-control.sh";;
+		job_ctrl)	export SCRIPT="$SCRIPTS_DIR/load/raid-job-control.sh";;
+		*)		export SCRIPT="$SCRIPTS_DIR/$SH_SCRIPT";;
+	esac
+
+	[ -f $SCRIPT ] || die "Script not found ($SCRIPT)"
+	[ -x $SCRIPT ] || die "Script is not executable ($SCRIPT)"
+
+#PRIORITY#
+	export NOTIFICATION="$HOME/autosys/priorities/Notification.txt"
+	export JOB_PRIORITY="$HOME/autosys/priorities/Job_Priority.txt"
+
+	grep $SCHED_JOB_NAME $JOB_PRIORITY | read Job_Name Priority
+	[[ $Priority != "HIGH" && $Priority != "URG" ]] && export Priority=LOW
+
+#EXEC#
+
+	shift 2
+	$SCRIPT "$@" > $LOG 2>&1
+
+	if	(( $? == 0 ))
+	then	success
+	else	error
+	fi
+................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+select jobname, startrun from ctmuser.cmr_ajf where startrun <= to_char(sysdate-1, 'yyyymmddhh24miss') and state='4' 
+
+It will return all jobs which are in executing mode from last 24 hours. You can modify it according to your requirement.
+
+
+%%$CALCDATE %%$ODATE -1
+
+.....................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+#!/bin/ksh
+if grep -q "GCS Communication Service Timed Out"  /emuser/ctm_em/log/gtw_log*; then
+echo "Kindly check the GTW logs for Global condition error"
+exit 1
+else
+echo "GCS is fine. No error in global condition "
+fi
+
+
+
+         
+
+
+
+
+
+

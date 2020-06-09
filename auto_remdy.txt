@@ -1,0 +1,212 @@
+-> Check for OS Compstat
+
+
+%%RUNCOUNT
+
+
+%%JOBNAME - %%ODATE Failed with OSCOMPSTAT - %%COMPSTAT %%RUNCOUNT
+
+%%RUNC %%PLUS 1
+
+echo RUNRC=%%MY_JOBA_COUNTER
+ctmvar -action set -var "%%#\MY_JOBA_COUNTER" -varexpr 0 -quiet
+ctmvar -action set -var "%%#\RUNC" -varexpr 0 -quiet
+then in the "Pre-exec command" field on the Genral tab of your cyclic job -
+echo MY_JOBA_COUNTER=%%MY_JOBA_COUNTER
+echo RUNC=%%RUNC
+
+ctmvar -action delete -var "%%\XYZ1"
+
+ctmvar -ACTION SET -VAR "%%\Job_Info" -VAREXPR "%%@JOBAME#%%@APPLIC" 
+ctmvar -ACTION SET -VAR "%%\jobnam" -VAREXPR "%%@JOBNAME"
+
+%%RUNC = 0 | s-glcontrolm01p
+
+%%FAILCOUNT
+
+
+NPPI0004,NPPI0008,NPPI0050,TWMRDA01,TWSAMO10,TWSAMO12,TWSSCO05
+
+NPPI0004,NPPI0008,NPPI0050,TWMRDA00,TWXAMO00,TWXSCO000
+
+
+ctmvar -action delete -var "%%\XYZ1"
+eis-package1
+
+INC000036285169
+INC000036281551
+INC000036269698
+INC000036255926 
+INC000036255992
+INC000036254559
+INC000036283193 
+
+/controlm/SchedulingWorks/DUMPALERT.log
+
+eisp_net
+
+NPPI0050_RECOVERY - need to SET TO OK 
+
+fordenesServiciosA_20200205.dat
+/controlm/SchedulingWorks/fordenesServicios_%%$DATE.dat
+fprocesosCan_%%$DATE..dat
+
+echo "Failure Count Achieved =" %%FAILC
+
+/dwh/dat/network/statistics/notloaded/Correct_TWMRDA01.sh || echo "Kindly check Original Job-TWMRDA01 Output for resolution"
+
+
+
+TWSAMO10_RECOVERY_FW - TSS DWH AO OPS ES
+TWSAMO12_RECOVERY_FW - TSS DWH AO OPS ES
+RUNCNP1 NPPI0004_RECOVERY - TSS MDW AND WEB team.
+RUNCNP2 NPPI0008_RECOVERY - TSS MDW AND WEB AO OPS-ES team
+RUNCNP5 NPPI0050_RECOVERY - TSS MDW AND WEB AO OPS-ES team
+RUNCNP3 TWMRDA01_RECOVERY - TSS DWH 
+RUNCNP4 TWSSCO05
+RUNCNP6 TWSAMO10_RECOVERY_FW
+RUNCNP7 TWSAMO12_RECOVERY_FW
+
+/dwh/dat/customer/ordenes/mailbox/fordenesServiciosA_%%$DATE..dat
+/dwh/dat/customer/ordenes/mailbox/fprocesosCan_%%$DATE..dat 
+
+Gaurav.Kamalapure02@vodafone.com,jagdish.nayak@vodafone.com
+
+Need to take ctm report for FW Jobs.
+
+FailedCounter %%JOBNAME %%RUNC %%ODATE
+
+%%RUNC %%PLUS 1
+Kindly monitor as this Job is failed
+/opt/SP/ctmagent/test
+
+Job %%JOBNAME is Failed %%RUNC for %%ODATE
+
+ctmvar -action set -var "%%#\RUNCNP7" -varexpr 0 -quiet
+
++ ctmfw /dwh/dat/customer/ordenes/mailbox/fordenesServicios_20200207.dat CREATE 0B 300 10 9 45 N NOW 0 NO_MIN_AGE NO_MAX_AGE
+/opt/SP/ctmagent/ctm/runtime/CMD.00018z19_001: line 2: ctmfw: command not found
+
++ [ 1 -ne 0 ]
++ echo ERROR: No se ha ejecutado correctamente el batch de generaci n de salida de promos monetarias a Puc
+ERROR: No se ha ejecutado correctamente el batch de generaci n de salida de promos monetarias a Puc
++ RETORNO=1
+
+
+18z1a
+
+/dwh/dat/customer/ordenes/mailbox/fordenesServiciosA_%%$DATE..dat
+
+/controlm/SchedulingWorks/SCRIPTS/N_Failure.pl
+
+SR Description:
+--------------------
+Auto- remediation of repetitive failed jobs, request to plug-in the instructions that were reviewed by Control-M team
+
+Action Taken:
+--------------------
+As a part of this project, we have automated the alerting mechanism to avoid manual task and reducing alerts for the list of Jobs mentioned. 
+
+Next Action:
+--------------------
+SR Resolved 
+
+TSS ACT AND PROV AO OPS-ES - JAP - TXPCL036
+TSS DWH AO OPS-ES   - TWMAF003
+TWMEIG01 - Disable alert
+TXPCL036_RECOVERY - alert for ctm team
+
+
+VFES-TUXEDO-PROD
+SS ACT AND PROV AO OPS-ES 
+
+ctmcreate -TASKTYPE COMMAND -CMDLINE hostname -description "Test Job" -SUBAPPLICATION DC_TESTR -APPLICATION DC_TESTR -HOSTGRP eis-package2 -JOBNAME DLDUPMT02 -RUN_AS eisp_landline
+
+
+Load all Jobs
+Apply filter for OK Jobs using Jobname function 
+Apply filter for NOTOK Jobs using jobame function with extra identifier
+Apply filter for Notification
+Remove the extra charaters as below
+
+replace substring with nothing
+values 
+
+echo COUNT%%DC-SAPHO-PJ-C-
+echo COUNT%-SAP-RD
+DC-DBASE-PJ-C-
+-RMAN-ZFS-RD
+-RMAN-RD
+-RMAN-ZFS-ZFS-RD
+-RMAN-DEL-RD
+- replace 
+
+echo COUNT%%DC-SAPHO-PJ-C-DC-BS1-DB-DE1-SAP-RD
+
+do the same steps for variables of OK and NOTOK
+
+We have analyzing the below INCs and It seems the issue is more related to Control-M Infra which caused the Job failure rather than the auto-remeditation solution. We have similar solution applied in NPPI0004 and NPPI0008 which is working fine. As of now, necessary steps are made to fix it. Kindly reach to Control-M DL or Via Remedy for any issues related to Spain Jobs.  
+Thanks to keep sharing feedback for any issues facing at your end. 
+
+nc -s <source> -zv <destination> port 
+Connection to hostname.company.com port [tcp/http] succeeded! 
+
+INC000036687942 for Below Jobs 
+
+DC-DBASE-TJ-C-ES-ATBNW2P-DB-DOCUMD-RMAN-RD 
+DC-DBASE-TJ-C-ES-BU8-DB-CATS1T-RMAN-RD 
+DC-DBASE-TJ-C-ES-BU8-DB-HSOVS1T-RMAN-RD 
+DC-DBASE-TJ-C-ES-BU8-DB-SCTRLS1T-RMAN-RD 
+DC-DBASE-TJ-C-ES-BU8-DB-INFORS1T-RMAN-RD
+DC-DBASE-TJ-C-ES-BU8-DB-TRUECS1T-RMAN-RD 
+DC-DBASE-PJ-C-GE-BA1-DB-KBAREP-RMAN-RD 
+DC-DBASE-PJ-C-GE-BA1-DB-TISDB98B-RMAN-RD 
+DC-DBASE-PJ-C-GE-BA1-DB-TISDB-RMAN-RD 
+DC-DBASE-PJ-C-GA-BGB-DB-EAIPILT1-RMAN-RD 
+DC-DBASE-PJ-C-GA-BGB-DB-NVGODR1-RMAN-RD
+
+[?4/?6/?2020 6:07 PM]  Leekha, Vishal, Vodafone Group:  
+https://rtcapps.internal.vodafone.com/thumbnailupload/submit.aspx 
+ 
+VF-DE-OPS-DE
+
+INC000036825783 - ZFS 
+INC000036800756 - SAPHO
+INC000036537926 - 1368 Jobs 
+
+Invonation Ideas : 
+
+Technical : 
+
+1. Create a validation program which validates and restricts to perform any write operation on Control-M DB if NDP is occuring withing 15 or 10 mins. 
+2. Using IOT to alert for any critical BAU Operation failure / Infratrustre Issue and message via SMS or customized mobile app ( need to build).
+3. Automate the workflow of Control-M Job Creation and modification via using API Interface between Requestor and Control-M Application.
+4. Smart CPUs - Heat Load for datacenter equipments and CPUs can be minimised by using Microchips which combine both optical and ecectronic circuits. Replacing electronic circuits with optical connections that use photons instead of electrons to carry data around chips. 
+5. Recruiting, Training and KT : Introducing AI with Human Intelligency in these opertation will reduce the time and increase efficiency. 
+6. Remedy Integration with Outlook and Messaging APP - For SLA Warning Mail or SMS Notification. Also Incident and SR Count Report automation from Remedy
+7. A solar water leakage detector which will help to reduce the wastage of water and also caluate water level usage. 
+8. Areal Solar Traffic Controller and Network Booster  
+  
+Non Technical : 
+
+1. SLA Warning Mail or SMS Notification from Remedy
+2. 
+
+Launchpad :
+
+1. Create an intelligent OS
+2. a robot to cook food and do household things
+3. 
+4. Using AI along with Human Intelligency to recruit, training and promotions
+5. Business Model with 70 - 30% Time Efforts. 
+
+
+
+
+
+
+
+
+
+
+

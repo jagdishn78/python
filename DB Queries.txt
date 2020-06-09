@@ -1,0 +1,91 @@
+select MESSAGE from CMR_IOALOG where ORDERNO= '2191064'
+
+select COUNT(JOBNAME) from CMR_IOALOG where MESSAGE LIKE '%ENDED NOTOK. NUMBER OF FAILURES SET TO 1%' AND ODATE = '20200212' AND JOBNAME LIKE 'WLDUMP%*'; 
+
+select JOBNAME from CMR_IOALOG where MESSAGE LIKE '%ENDED NOTOK. NUMBER OF FAILURES SET TO 1%' AND ODATE = '20200213'; 
+
+select JOBNAME from CMR_IOALOG where MESSAGE LIKE '%ENDED NOTOK%' AND ODATE = '20200213';
+
+INTO OUTFILE 'textfile.csv' FIELDS TERMINATED BY '|'
+where JOBNAME LIKE '%WLDUMP*';
+
+SELECT ... FROM ... WHERE ... 
+INTO OUTFILE 'textfile.csv'
+FIELDS TERMINATED BY '|'
+
+select * from CMR_IOALOG where ORDERNO= '4063239' AND MESSAGE LIKE '%controlm%';
+
+select COUNT(*) from CMR_IOALOG where MESSAGE LIKE '%FAIL_COUNT=%';
+
+20200213073004.
+
+09:33:21 13/02/2020	SET TO OK REQUEST SUBMITTED BY USER controlm	5411
+09:33:21 13/02/2020	JOB SET TO OK	5410
+
+08:15:03 12/02/2020	DOVARIABLE '%%WLDUMP02_FAIL_COUNT\='1' performed	5707
+
+09:35:01 13/02/2020	ENDED NOTOK. NUMBER OF FAILURES SET TO 1	5134
+
+FAIL_COUNT'='1'
+
+2191064
+
+144.230.208.59
+
+WLDUMP02,WLDUMP03,WLDUMP04,WLDUMP05,WLDUMP06,WLDUMP07,WLDUMP09,WLDUMP0B
+
+[?2/?13/?2020 2:57 PM]  Leekha, Vishal, Vodafone Group:  
+select COUNT(JOBNAME) from CMR_IOALOG where MESSAGE like '%SET TO OK%' and odate=20200213; 
+
+
+SQL> select JOBNAME from CMR_IOALOG where MESSAGE LIKE '%SET TO OK REQUEST SUBMITTED BY USER controlm%' AND ODATE = '20200211' AND JOBNAME LIKE 'WLDUMP%';
+
+JOBNAME
+----------------------------------------------------------------
+WLDUMP00
+WLDUMP01
+WLDUMP73
+
+SQL> select JOBNAME from CMR_IOALOG where MESSAGE LIKE '%ENDED NOTOK%' AND JOBNAME LIKE 'TIANB%';
+
+no rows selected
+
+
+
+,........................
+
+
+
+ctmcreate -TASKTYPE COMMAND -CMDLINE hostname -description "Test Job" -SUBAPPLICATION DC_TESTR -APPLICATION DC_TESTR -HOSTGRP esxsb015 -JOBNAME DLDUPMT02 -RUN_AS tuxinet
+
+
+SPITCVF004_FECLA7731-OK
+[?2/?14/?2020 8:57 PM]  Patil, Amitkumar, Vodafone Group:  
+TXSGCPCL_TXPCL036-OK 
+ 
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+CMR_CON_J
+
+
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+ContactName
+CustomerID
+
+CategoryID - Orders 
+CategoryID - Categories
+
+
+SELECT Categories.CategoryID from Categories INNER JOIN Categories ON Products.CategoryID=Categories.CategoryID;
+
+To validate which Jobs are assigned to L1 for all the Jobs
+check the list of Jobs spain for automation
+MsgID check - Gaurav
+Filewatcher Job SOP for sachidha 
+
+
+
+

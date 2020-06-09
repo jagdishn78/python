@@ -1,0 +1,206 @@
+ctmcalc_date -FOLDER <Folder Path Name>
+-NAME <Job or Sub Folder Name>
+-DATE <Scheduling Date>
+-SHIFT <+/-n>
+-ONLY_WORKING_DAYS <Y/N>
+-OUTPUT_FORMAT DATE | EXTENDED (Date and flag) | FLAG
+[ -DEBUG <debug level 0-5> ]
+
+0088276785
+79535
+35392IPSF201920.zip
+
+DC -:- 22W*32L = 704 sq ft
+
+-:- 20W*30L = 600 sq ft
+-:- 1200*1450 = 1740000
+-:- 1500*600 = 900000
+
+DSP :<->-<->-<->-<->:
+
+...|1200| : -Rs...
+...|-210| : -Rs...
+.............
+.............
+.............
+...|1450| : -Rs...
+...|-210|: -Rs...
+
+select JOBNAME,MEMNAME from CMR_AJF where ORDERNO=xxx;
+update CMR_AJF set STATE='5',OSCOMPSTAT=1,STATUS='N' where ORDERNO=xxx;
+
+ - Municipality = 3660
+ - Paani Kuha =
+ - 220*220 =
+ - Pipe connection =
+ - Jet Motor =
+
+jagdish.nayak@vodafone.com
+
+Chief of Defence Staff (CDS) General Bipin Rawat, Army chief General M M Naravane, Navy chief Admiral Karambir Singh and Air Force chief Air Marshal R K S Bhadauria
+
+To build a web site that shows data from a database, you will need:
+
+An RDBMS database program (i.e. MS Access, SQL Server, MySQL)
+To use a server-side scripting language, like PHP or ASP
+To use SQL to get the data you want
+To use HTML / CSS to style the page
+
+
+
+A statement from residencial of area from VOA or any welfare association as residencial proof.
+aadhar 
+family card
+Employee ID 
+Driving Licence 
+Passport
+Birth certificat
+school and college certificate
+Passport size 
+
+
+-> Control-M Event KO Records ? 
+...................................
+-> Who is raising Change Request ? 
+-> Change Request 
+-> Service Request
+....................................
+
+
+
+
+
+select NODEID,RUNCOUNT,STATUS,STATE,ODATE from CMR_AJF where MEMNAME ='DC-SCH-PJ-A-SOX-PROCESS-COMMON';
+select NODEID,RUNCOUNT,STATUS,STATE,ODATE from CMR_AJF where STATE=N;
+ 
+APPLIES TO:  
+Control-M/Enterprise Manager V9 Control-M/Server for UNIX and Microsoft Windows V9 Control-M/Agent for UNIX and Microsoft Windows V9
+ 
+
+
+QUESTION:
+
+- How to capture the filename only from the <directory>/<File Name> output using the "Capture from job output" function on Control-M/Enterprise Manager Client?
+- How to define a Control-M job that will extract specific word from the job's output on the Control-M Workload Automation (WLA) GUI?
+  For example, to capture "BMC_OUTOUT.txt" from "/u01/controlm/ctmagent/BMC_OUTOUT.txt" in the Control-M Job's Output
+
+
+ANSWER:
+
+Follow the steps below to capture specific words that is  recorded in the Control-M job's output using the "Capture from job output" function:
+Note: This solution will extract the filename only from the "<directory>/<File Name>" statement that is recorded in the Control-M job's output using the "Capture from job output" function.
+
+1. Launch the Control-M Workload Automation ( WLA ) GUI
+2. Open the desired Workspace to edit the job
+3. Go to the "Actions" Tab of the job properties
+4. Click on the "+" icon under the "Capture from job output" section
+5. Input the following details to capture the <File Name> only from the <Directory name>/<File Name> word in the output
+    For example, the <Directory Name>/<File Name> is "/u01/controlm/ctmagent/BMC_OUTOUT.txt"
+    - Variable Name: TESTCAP  
+ - Variable Type: Global / Local - Search String: /u01/controlm/ctmagent/ Forward by: 0 Lines 0 Words Delimiter: White Space Capture: No of words: 1 6. Save the job and order as desired Note: In order for another job in a different Control-M Server to use this Variable (Autoedit), the AUTOEDIT must be a GLOBAL one (which is %%\TESTCAP). 
+   
+The following video demonstrates this article:
+                                 
+Other languages: Italiano 
+   
+Additional Information:
+- To check if the Global Variable (Autoedit) is created / updated correctly after job completed, run this command on the Control-M Server: ctmvar -ACTION LIST | grep TESTCAP (UNIX) ctmvar -ACTION LIST |findtr TESTCAP (WINDOWS)
+
+11:48:23 31/01/2020	ENDED AT 20200131114823. OSCOMPSTAT 0. RUNCNT 60	5100
+11:48:24 31/01/2020	EMAIL TO jagdish.nayak@vodafone.com  PERFORMED	5140
+11:48:24 31/01/2020	ENDED OK. NUMBER OF FAILURES SET TO 0	5133
+
+
+  %%POSTCMD = echo FailCount%%FailCount
+
+Scheduling Administration OPS-TSSC
+
+Control-M Server Log File
+
+
+SurveySavvy, GlobalTestMarket and American Consumer Opinion are just a few of the sites that will pay you to share your thoughts.
+Hello Everyone,
+
+As most of you are aware today is my last working day at ITC Infotech. 
+
+I would like to take this occasion to let each one of you know that working with you kind folks and getting to know you, has been one of the best experiencesof my life.  
+
+I have enjoyed my tenure here and I appreciate having had the opportunity to work with you. Thank you for the support, guidance, and encouragement you haveprovided me during my time at ITC Infotech.
+
+As I sign off today, I thank each one of you for making my six years of my career memorable.
+
+Please keep in touch, below are my personal contact details.
+
+Email address - radhakrishna2987@gmail.com 
+
+Mobile No - 9493207983.
+
+Thanks again for everything. I wish you all the best.
+
+--> Altfarse :-:-:-:-:
+...)(... 
+--> Alfason
+
+
+<0> ---> 10K
+
+2.5K
+ 
+
+Regards,
+
+Radha Krishna
+
+
+
+
+dockor.io
+commands --> 
+docker imagers (docke hub)- it contains OS images. 
+we can download images with apps preinstalled.
+docker pull (os image name)
+docker run (os image id) 
+dockr ps -a ( To get all docker you have used or exited) 
+docker run -it f78346266 sh
+docker start (container ID)
+docker stop (container ID)
+docker exec -it  f78346266 sh
+docker rmi (container ID)
+
+portainer.io
+
+Security Authorization Menu
+-----------------------------
+
+Select one of the following options:
+
+1 - Security Maintenance Utility
+2 - Backup Security Definition Tables
+3 - Restore Security Definition Tables
+
+
+Parameter Customization Menu
+-----------------------------
+
+Select one of the following options:
+
+1 - Basic Communication and Operational Parameters
+2 - Advanced Communication and Operational Parameters
+3 - System Parameters and Shout Destination Tables
+4 - Default Parameters for Communicating with Agent Platforms
+5 - Parameters for Communicating with Specific Agent Platforms
+6 - Simple Mail Transfer Protocol Parameters
+
+q - Quit
+
+
+PROCNAME  PROCID    PROCSTAT  PSTAT_REQ  SLEEP_TIME  DIAG_LVL
+CE        25072     R         R          60          0
+RT        24828     R         R          30          0
+SU        24835     R         R          15          0
+TR        18426     R         R          5           0
+WD        25120     R         R          360         0
+q^C
+
+
+ 
